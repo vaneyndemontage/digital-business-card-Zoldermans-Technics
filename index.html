@@ -32,7 +32,7 @@
       border:1px solid var(--border);
       border-radius:22px;
       box-shadow: 0 10px 30px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.03);
-      padding:26px 22px 22px;
+      padding:24px 22px 22px; /* iets minder top padding */
       position:relative; overflow:hidden;
     }
     .card::after{
@@ -47,28 +47,30 @@
     /* Logo */
     .logo{
       text-align:center;
-      margin-top:20px; /* minder ruimte */
-      margin-bottom:-70px; /* minder ruimte */
+      margin:12px 0 8px;  /* geen negatieve marge meer */
       position:relative;
       z-index:2;
-      overflow:visible;
     }
     .logo img{
       max-width:260px;
       width:80%;
       height:auto;
       display:block;
-      margin: 0 auto;
-      object-fit:contain;
+      margin:0 auto;
+      object-fit:contain;   /* iOS-vriendelijk */
+      vertical-align:top;
     }
 
+    /* Inhoud iets optillen ipv negatieve marges te gebruiken */
     .list{
       display:flex;
       flex-direction:column;
       gap:14px;
       position:relative;
       z-index:2;
+      transform: translateY(-6px); /* compacter zonder overlap issues */
     }
+
     .row{
       display:grid;
       grid-template-columns:28px 1fr;
@@ -114,6 +116,11 @@
       margin-top:10px;
     }
     .icon{width:24px; height:24px; display:inline-block; color:var(--accent)}
+
+    /* optioneel: logo iets groter op bredere schermen */
+    @media (min-width:600px){
+      .logo img{max-width:300px}
+    }
   </style>
 </head>
 <body>
@@ -185,9 +192,7 @@
 
     <!-- QR -->
     <div class="qr" aria-label="QR">
-     
       <img src="qr-code.png" alt="QR-code" />
-      
     </div>
 
     <!-- Save Contact -->
@@ -224,14 +229,3 @@ END:VCARD`;
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
