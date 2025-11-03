@@ -25,8 +25,8 @@
       color:var(--text);
       background: radial-gradient(1100px 1100px at 120% -20%, #1b1c1f 0%, var(--bg) 60%);
       min-height:100svh;
-      padding:16px;
-      padding-top: calc(16px + env(safe-area-inset-top, 0px));
+      padding:12px;
+      padding-top: calc(10px + env(safe-area-inset-top, 0px));
     }
 
     .wrap{
@@ -40,7 +40,7 @@
       border:1px solid var(--border);
       border-radius:22px;
       box-shadow: 0 10px 30px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.03);
-      padding:20px 22px 22px; /* iets minder top padding */
+      padding:14px 20px 20px; /* nog minder top-padding */
       position:relative;
       overflow:visible;
     }
@@ -57,14 +57,14 @@
     /* Logo */
     .logo{
       text-align:center;
-      margin:0 0 2px;  /* nog iets compacter */
+      margin:0;              /* geen marge meer */
       position:relative;
       z-index:2;
     }
 
     .logo img{
-      max-width:230px; /* iets kleiner voor balans */
-      width:72%;
+      max-width:220px;       /* licht verkleind */
+      width:70%;
       height:auto;
       display:block;
       margin:0 auto;
@@ -76,40 +76,41 @@
     .list{
       display:flex;
       flex-direction:column;
-      gap:10px; /* iets dichter op elkaar */
+      gap:8px;               /* dichter bij elkaar */
       position:relative;
       z-index:2;
+      margin-top:2px;        /* kleinste afstand tussen logo en lijst */
     }
 
     .row{
       display:grid;
       grid-template-columns:28px 1fr;
       align-items:center;
-      gap:12px;
-      padding:9px 12px;
-      border-radius:14px;
+      gap:10px;
+      padding:8px 12px;
+      border-radius:12px;
       background:rgba(255,255,255,.03);
       border:1px solid rgba(255,255,255,.06);
     }
 
     .row a{color:var(--text); text-decoration:none}
-    .label{font-size:13px; letter-spacing:.2px; font-weight:700; color:var(--accent)}
-    .value{font-size:18px; font-weight:800; line-height:1.25}
+    .label{font-size:12px; letter-spacing:.2px; font-weight:700; color:var(--accent)}
+    .value{font-size:17px; font-weight:800; line-height:1.25}
 
     /* QR-code */
     .qr{
       display:flex; align-items:center; justify-content:center;
-      padding:12px;
-      border-radius:16px;
+      padding:10px;
+      border-radius:14px;
       background:var(--pill);
       border:1px dashed rgba(255,255,255,.18);
-      margin:6px 0 14px; /* iets compacter */
-      min-height:110px;
+      margin:4px 0 12px;
+      min-height:100px;
       text-align:center;
       color:#aab2b9;
       font-size:14px;
     }
-    .qr img{max-width:170px; height:auto; display:block}
+    .qr img{max-width:160px; height:auto; display:block}
 
     /* Knop */
     .cta{
@@ -120,25 +121,25 @@
       border:2px solid var(--accent);
       font-weight:900;
       letter-spacing:.2px;
-      padding:14px 18px;
-      border-radius:16px;
-      font-size:18px;
+      padding:12px 16px;
+      border-radius:14px;
+      font-size:17px;
       cursor:pointer;
       box-shadow: 0 8px 22px rgba(255,197,51,.35);
     }
     .cta:active{transform:translateY(1px)}
 
     .small{
-      font-size:12px;
+      font-size:11px;
       color:#9aa0a6;
       text-align:center;
-      margin-top:8px;
+      margin-top:6px;
     }
 
-    .icon{width:24px; height:24px; display:inline-block; color:var(--accent)}
+    .icon{width:22px; height:22px; display:inline-block; color:var(--accent)}
 
     @media (min-width:600px){
-      .logo img{max-width:260px}
+      .logo img{max-width:250px}
     }
   </style>
 </head>
