@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Zoldermans Technics – Montage | Contactkaart</title>
+  <meta name="theme-color" content="#111111">
+  <style>
+    :root{
+      --bg:#101112;
+      --card:#141517;
+      --text:#ffffff;
+      --muted:#cfcfcf;
+      --accent:#ffc533;   /* geel */
+      --accent-strong:#ffb300;
+      --border:#232427;
+      --pill:#1d1f22;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background: radial-gradient(1100px 1100px at 120% -20%, #1b1c1f 0%, var(--bg) 60%) fixed;
+      display:flex; align-items:center; justify-content:center;
+      padding:22px;
+    }
+    .card{
+      width:min(420px, 100%);
+      background:linear-gradient(180deg,#15161a 0%, #101114 100%);
+      border:1px solid var(--border);
+      border-radius:22px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.03);
+      padding:26px 22px 22px;
+      position:relative; overflow:hidden;
+    }
+    .card::after{
+      content:"";
+      position:absolute; inset:0;
+      background-image: radial-gradient(rgba(255,255,255,.05) 1px, transparent 1px);
+      background-size:18px 18px;
+      opacity:.35; pointer-events:none;
+      mask-image: linear-gradient(#000, rgba(0,0,0,.0));
+    }
+
+    /* Logo-stijl */
+    .logo{position:relative; z-index:2; margin-bottom:18px}
+    .logo-top{
+      font-weight:900; font-size:34px; line-height:1; letter-spacing:.5px;
+      color:var(--accent);
+      display:flex; align-items:center; gap:10px;
+    }
+    .logo-top .bar{width:2px; height:28px; background:var(--accent); display:inline-block}
+    .logo-tools{
+      width:32px; height:32px; color:var(--accent);
+    }
+    .logo-script{
+      margin-top:6px; font-size:36px; font-weight:700; font-style:italic; color:var(--accent);
+      letter-spacing:.5px;
+    }
+
+    .list{display:flex; flex-direction:column; gap:14px; position:relative; z-index:2}
+    .row{
+      display:grid; grid-template-columns:28px 1fr;
+      align-items:center; gap:12px;
+      padding:10px 12px;
+      border-radius:14px;
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.06);
+    }
+    .row a{color:var(--text); text-decoration:none}
+    .muted{color:var(--accent)}
+    .label{font-size:13px; letter-spacing:.2px; font-weight:700; color:var(--accent)}
+    .value{font-size:18px; font-weight:800; line-height:1.25}
+
+    .qr{
+      display:flex; align-items:center; justify-content:center;
+      padding:14px; border-radius:16px; background:var(--pill);
+      border:1px dashed rgba(255,255,255,.18); margin:12px 0 18px;
+      min-height:120px; text-align:center; color:#aab2b9; font-size:14px;
+    }
+    .qr img{max-width:180px; height:auto; display:block}
+
+    .cta{
+      display:block; width:100%;
+      background:linear-gradient(180deg,var(--accent),var(--accent-strong));
+      color:#111; border:2px solid var(--accent);
+      font-weight:900; letter-spacing:.2px;
+      padding:16px 18px; border-radius:16px; font-size:18px; cursor:pointer;
+      box-shadow: 0 8px 22px rgba(255,197,51,.35);
+    }
+    .cta:active{transform:translateY(1px)}
+    .small{font-size:12px; color:#9aa0a6; text-align:center; margin-top:10px}
+
+    .icon{width:24px; height:24px; display:inline-block; color:var(--accent)}
+  </style>
+</head>
+<body>
+  <main class="card" aria-label="Zoldermans Technics – Montage contactkaart">
+    <!-- Logo -->
+    <div class="logo" aria-hidden="true">
+      <div class="logo-top">
+        <span>ZOLDERMANS</span>
+        <span class="bar"></span>
+        <span>TECHNICS</span>
+        <!-- wrench/hammer pictogram -->
+        <svg class="logo-tools" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path d="M21 3l-6 6" stroke-width="1.8"/>
+          <path d="M17 3h4v4" stroke-width="1.8"/>
+          <path d="M2 22l7-7" stroke-width="1.8"/>
+          <path d="M5 15l4 4" stroke-width="1.8"/>
+        </svg>
+      </div>
+      <div class="logo-script">Montage</div>
+    </div>
+
+    <section class="list">
+      <!-- Email -->
+      <div class="row">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M4 6h16a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z" stroke-width="1.6"/>
+            <path d="m22 8-10 6L2 8" stroke-width="1.6"/>
+          </svg>
+        </span>
+        <div>
+          <div class="label">E-mail</div>
+          <a class="value" href="mailto:zoldermansy@gmail.com?subject=Contact%20via%20NFC">zoldermansy@gmail.com</a>
+        </div>
+      </div>
+
+      <!-- Phone -->
+      <div class="row">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.86.33 1.7.62 2.5a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.58-1.12a2 2 0 0 1 2.11-.45c.8.29 1.64.5 2.5.62A2 2 0 0 1 22 16.92z" stroke-width="1.6"/>
+          </svg>
+        </span>
+        <div>
+          <div class="label">Telefoon</div>
+          <a class="value" href="tel:+32473610552">0473 61 05 52</a>
+        </div>
+      </div>
+
+      <!-- Address -->
+      <div class="row">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M12 21s-7-5.33-7-11a7 7 0 1 1 14 0c0 5.67-7 11-7 11z" stroke-width="1.6"/>
+            <circle cx="12" cy="10" r="3" stroke-width="1.6"/>
+          </svg>
+        </span>
+        <div>
+          <div class="label">Adres</div>
+          <a class="value" href="https://maps.google.com/?q=Buisstraat%2099,%202890%20Puurs-Sint-Amands" target="_blank" rel="noopener">
+            Buisstraat 99<br/>2890 Puurs-Sint-Amands
+          </a>
+        </div>
+      </div>
+
+      <!-- VAT -->
+      <div class="row">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M6 2h12v20l-3-2-3 2-3-2-3 2V2z" stroke-width="1.6"/>
+            <path d="M8 7h8M8 11h8M8 15h6" stroke-width="1.6"/>
+          </svg>
+        </span>
+        <div>
+          <div class="label">BTW</div>
+          <div class="value">BE 1014.923.668</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- QR (vervang door jouw echte QR-afbeelding) -->
+    <div class="qr" aria-label="QR">
+      <!-- Als je een echte QR hebt, zet hier bv.: -->
+      <!-- <img src="qr-zoldermans.png" alt="QR-code" /> -->
+      Plaats hier je QR-code afbeelding
+    </div>
+
+    <!-- Save Contact -->
+    <button id="saveContact" class="cta">gegevens opslaan</button>
+    <div class="small">Open op smartphone en tik om het contact (.vcf) te bewaren.</div>
+  </main>
+
+  <script>
+    // Genereer & download vCard (werkt op iOS/Android)
+    function downloadVCard() {
+      const vcard =
+`BEGIN:VCARD
+VERSION:3.0
+N:;Zoldermans Technics – Montage;;;
+FN:Zoldermans Technics – Montage
+ORG:Zoldermans Technics
+TITLE:Montage
+EMAIL;TYPE=INTERNET;TYPE=WORK:zoldermansy@gmail.com
+TEL;TYPE=CELL:+32473610552
+ADR;TYPE=WORK:;;Buisstraat 99;Puurs-Sint-Amands;;2890;Belgium
+NOTE:BTW BE 1014.923.668
+END:VCARD`;
+
+      const blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'Zoldermans-Technics.vcf';
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 800);
+    }
+
+    document.getElementById('saveContact').addEventListener('click', downloadVCard);
+  </script>
+</body>
+</html>
