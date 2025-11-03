@@ -22,20 +22,28 @@
       margin:0;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
       color:var(--text);
-      background: radial-gradient(1100px 1100px at 120% -20%, #1b1c1f 0%, var(--bg) 60%) fixed;
-      display:flex; align-items:center; justify-content:center;
-      padding:22px;
-      padding-top: calc(22px + env(safe-area-inset-top, 0px));
+      /* BELANGRIJK: geen 'fixed' meer achter de gradient */
+      background: radial-gradient(1100px 1100px at 120% -20%, #1b1c1f 0%, var(--bg) 60%);
+      min-height:100svh;            /* moderne mobiele viewport-unit */
+      padding:16px;
+      padding-top: calc(16px + env(safe-area-inset-top, 0px));
     }
+
+    /* wrapper centreert horizontaal, niet verticaal */
+    .wrap{
+      max-width:420px;
+      margin:0 auto;               /* center horizontaal */
+    }
+
     .card{
-      width:min(420px, 100%);
+      width:100%;
       background:linear-gradient(180deg,#15161a 0%, #101114 100%);
       border:1px solid var(--border);
       border-radius:22px;
       box-shadow: 0 10px 30px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.03);
-      padding:30px 22px 22px; /* iets extra bovenruimte */
+      padding:28px 22px 22px;      /* veilige top-padding */
       position:relative;
-      overflow:visible; /* voorkom afknippen bovenaan op iOS */
+      overflow:visible;            /* niets afknippen */
     }
     .card::after{
       content:"";
@@ -43,14 +51,14 @@
       background-image: radial-gradient(rgba(255,255,255,.05) 1px, transparent 1px);
       background-size:18px 18px;
       opacity:.35; pointer-events:none;
-      mask-image: linear-gradient(#000, rgba(0,0,0,.0));
-      border-radius:22px; /* behoud visueel de afgeronde hoeken */
+      border-radius:22px;
+      /* geen mask of fixed dingen nodig */
     }
 
     /* Logo */
     .logo{
       text-align:center;
-      margin:6px 0 8px;   /* veilige, kleine marges */
+      margin:6px 0 10px;
       position:relative;
       z-index:2;
     }
@@ -62,13 +70,6 @@
       margin:0 auto;
       object-fit:contain;
       vertical-align:top;
-      image-rendering: -webkit-optimize-contrast;
-    }
-
-    /* iOS-specifiek: nog iets meer top-padding voor zekerheid */
-    @supports (-webkit-touch-callout: none) {
-      .card{ padding-top:36px; }
-      .logo{ margin-top:4px; }
     }
 
     .list{
@@ -77,7 +78,6 @@
       gap:14px;
       position:relative;
       z-index:2;
-      transform:none; /* geen negatieve/optillende trucs nodig */
     }
 
     .row{
@@ -132,81 +132,83 @@
   </style>
 </head>
 <body>
-  <main class="card" aria-label="Zoldermans Technics – Montage contactkaart">
+  <div class="wrap">
+    <main class="card" aria-label="Zoldermans Technics – Montage contactkaart">
 
-    <!-- Logo -->
-    <div class="logo">
-      <img src="yens.png" alt="Zoldermans Technics Montage logo" />
-    </div>
-
-    <section class="list">
-      <!-- Email -->
-      <div class="row">
-        <span class="icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-            <path d="M4 6h16a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z" stroke-width="1.6"/>
-            <path d="m22 8-10 6L2 8" stroke-width="1.6"/>
-          </svg>
-        </span>
-        <div>
-          <div class="label">E-mail</div>
-          <a class="value" href="mailto:zoldermansy@gmail.com?subject=Contact%20via%20NFC">zoldermansy@gmail.com</a>
-        </div>
+      <!-- Logo -->
+      <div class="logo">
+        <img src="yens.png" alt="Zoldermans Technics Montage logo" />
       </div>
 
-      <!-- Phone -->
-      <div class="row">
-        <span class="icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.86.33 1.7.62 2.5a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.58-1.12a2 2 0 0 1 2.11-.45c.8.29 1.64.5 2.5.62A2 2 0 0 1 22 16.92z" stroke-width="1.6"/>
-          </svg>
-        </span>
-        <div>
-          <div class="label">Telefoon</div>
-          <a class="value" href="tel:+32473610552">0473 61 05 52</a>
+      <section class="list">
+        <!-- Email -->
+        <div class="row">
+          <span class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M4 6h16a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z" stroke-width="1.6"/>
+              <path d="m22 8-10 6L2 8" stroke-width="1.6"/>
+            </svg>
+          </span>
+          <div>
+            <div class="label">E-mail</div>
+            <a class="value" href="mailto:zoldermansy@gmail.com?subject=Contact%20via%20NFC">zoldermansy@gmail.com</a>
+          </div>
         </div>
+
+        <!-- Phone -->
+        <div class="row">
+          <span class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.86.33 1.7.62 2.5a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.58-1.12a2 2 0 0 1 2.11-.45c.8.29 1.64.5 2.5.62A2 2 0 0 1 22 16.92z" stroke-width="1.6"/>
+            </svg>
+          </span>
+          <div>
+            <div class="label">Telefoon</div>
+            <a class="value" href="tel:+32473610552">0473 61 05 52</a>
+          </div>
+        </div>
+
+        <!-- Address -->
+        <div class="row">
+          <span class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M12 21s-7-5.33-7-11a7 7 0 1 1 14 0c0 5.67-7 11-7 11z" stroke-width="1.6"/>
+              <circle cx="12" cy="10" r="3" stroke-width="1.6"/>
+            </svg>
+          </span>
+          <div>
+            <div class="label">Adres</div>
+            <a class="value" href="https://maps.google.com/?q=Buisstraat%2099,%202890%20Puurs-Sint-Amands" target="_blank" rel="noopener">
+              Buisstraat 99<br/>2890 Puurs-Sint-Amands
+            </a>
+          </div>
+        </div>
+
+        <!-- VAT -->
+        <div class="row">
+          <span class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M6 2h12v20l-3-2-3 2-3-2-3 2V2z" stroke-width="1.6"/>
+              <path d="M8 7h8M8 11h8M8 15h6" stroke-width="1.6"/>
+            </svg>
+          </span>
+          <div>
+            <div class="label">BTW</div>
+            <div class="value">BE 1014.923.668</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- QR -->
+      <div class="qr" aria-label="QR">
+        <img src="qr-code.png" alt="QR-code" />
       </div>
 
-      <!-- Address -->
-      <div class="row">
-        <span class="icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-            <path d="M12 21s-7-5.33-7-11a7 7 0 1 1 14 0c0 5.67-7 11-7 11z" stroke-width="1.6"/>
-            <circle cx="12" cy="10" r="3" stroke-width="1.6"/>
-          </svg>
-        </span>
-        <div>
-          <div class="label">Adres</div>
-          <a class="value" href="https://maps.google.com/?q=Buisstraat%2099,%202890%20Puurs-Sint-Amands" target="_blank" rel="noopener">
-            Buisstraat 99<br/>2890 Puurs-Sint-Amands
-          </a>
-        </div>
-      </div>
-
-      <!-- VAT -->
-      <div class="row">
-        <span class="icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-            <path d="M6 2h12v20l-3-2-3 2-3-2-3 2V2z" stroke-width="1.6"/>
-            <path d="M8 7h8M8 11h8M8 15h6" stroke-width="1.6"/>
-          </svg>
-        </span>
-        <div>
-          <div class="label">BTW</div>
-          <div class="value">BE 1014.923.668</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- QR -->
-    <div class="qr" aria-label="QR">
-      <img src="qr-code.png" alt="QR-code" />
-    </div>
-
-    <!-- Save Contact -->
-    <button id="saveContact" class="cta">gegevens opslaan</button>
-    <div class="small">Open op smartphone en tik om het contact (.vcf) te bewaren.</div>
-  </main>
+      <!-- Save Contact -->
+      <button id="saveContact" class="cta">gegevens opslaan</button>
+      <div class="small">Open op smartphone en tik om het contact (.vcf) te bewaren.</div>
+    </main>
+  </div>
 
   <script>
     // Genereer & download vCard (werkt op iOS/Android)
