@@ -44,20 +44,17 @@
       mask-image: linear-gradient(#000, rgba(0,0,0,.0));
     }
 
-    /* Logo-stijl */
-    .logo{position:relative; z-index:2; margin-bottom:18px}
-    .logo-top{
-      font-weight:900; font-size:34px; line-height:1; letter-spacing:.5px;
-      color:var(--accent);
-      display:flex; align-items:center; gap:10px;
+    /* Logo */
+    .logo{
+      text-align:center;
+      margin-bottom:24px;
+      position:relative;
+      z-index:2;
     }
-    .logo-top .bar{width:2px; height:28px; background:var(--accent); display:inline-block}
-    .logo-tools{
-      width:32px; height:32px; color:var(--accent);
-    }
-    .logo-script{
-      margin-top:6px; font-size:36px; font-weight:700; font-style:italic; color:var(--accent);
-      letter-spacing:.5px;
+    .logo img{
+      max-width:280px;
+      width:80%;
+      height:auto;
     }
 
     .list{display:flex; flex-direction:column; gap:14px; position:relative; z-index:2}
@@ -98,21 +95,10 @@
 </head>
 <body>
   <main class="card" aria-label="Zoldermans Technics – Montage contactkaart">
+
     <!-- Logo -->
-    <div class="logo" aria-hidden="true">
-      <div class="logo-top">
-        <span>ZOLDERMANS</span>
-        <span class="bar"></span>
-        <span>TECHNICS</span>
-        <!-- wrench/hammer pictogram -->
-        <svg class="logo-tools" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-          <path d="M21 3l-6 6" stroke-width="1.8"/>
-          <path d="M17 3h4v4" stroke-width="1.8"/>
-          <path d="M2 22l7-7" stroke-width="1.8"/>
-          <path d="M5 15l4 4" stroke-width="1.8"/>
-        </svg>
-      </div>
-      <div class="logo-script">Montage</div>
+    <div class="logo">
+      <img src="yens.png" alt="Zoldermans Technics Montage logo" />
     </div>
 
     <section class="list">
@@ -174,11 +160,12 @@
       </div>
     </section>
 
-    <!-- QR (vervang door jouw echte QR-afbeelding) -->
+    <!-- QR -->
     <div class="qr" aria-label="QR">
-      <!-- Als je een echte QR hebt, zet hier bv.: -->
-      <!-- <img src="qr-zoldermans.png" alt="QR-code" /> -->
-      Plaats hier je QR-code afbeelding
+      Plaats hier je QR-code (of vervang door afbeelding)
+      <!-- voorbeeld:
+      <img src="qr-zoldermans.png" alt="QR-code" />
+      -->
     </div>
 
     <!-- Save Contact -->
