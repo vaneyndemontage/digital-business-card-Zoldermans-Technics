@@ -2,7 +2,7 @@
 <html lang="nl">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Zoldermans Technics – Montage | Contactkaart</title>
   <meta name="theme-color" content="#111111">
   <style>
@@ -25,6 +25,7 @@
       background: radial-gradient(1100px 1100px at 120% -20%, #1b1c1f 0%, var(--bg) 60%) fixed;
       display:flex; align-items:center; justify-content:center;
       padding:22px;
+      padding-top: calc(22px + env(safe-area-inset-top, 0px));
     }
     .card{
       width:min(420px, 100%);
@@ -32,8 +33,9 @@
       border:1px solid var(--border);
       border-radius:22px;
       box-shadow: 0 10px 30px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.03);
-      padding:24px 22px 22px; /* iets minder top padding */
-      position:relative; overflow:hidden;
+      padding:30px 22px 22px; /* iets extra bovenruimte */
+      position:relative;
+      overflow:visible; /* voorkom afknippen bovenaan op iOS */
     }
     .card::after{
       content:"";
@@ -42,12 +44,13 @@
       background-size:18px 18px;
       opacity:.35; pointer-events:none;
       mask-image: linear-gradient(#000, rgba(0,0,0,.0));
+      border-radius:22px; /* behoud visueel de afgeronde hoeken */
     }
 
     /* Logo */
     .logo{
       text-align:center;
-      margin:12px 0 8px;  /* geen negatieve marge meer */
+      margin:6px 0 8px;   /* veilige, kleine marges */
       position:relative;
       z-index:2;
     }
@@ -57,18 +60,24 @@
       height:auto;
       display:block;
       margin:0 auto;
-      object-fit:contain;   /* iOS-vriendelijk */
+      object-fit:contain;
       vertical-align:top;
+      image-rendering: -webkit-optimize-contrast;
     }
 
-    /* Inhoud iets optillen ipv negatieve marges te gebruiken */
+    /* iOS-specifiek: nog iets meer top-padding voor zekerheid */
+    @supports (-webkit-touch-callout: none) {
+      .card{ padding-top:36px; }
+      .logo{ margin-top:4px; }
+    }
+
     .list{
       display:flex;
       flex-direction:column;
       gap:14px;
       position:relative;
       z-index:2;
-      transform: translateY(-6px); /* compacter zonder overlap issues */
+      transform:none; /* geen negatieve/optillende trucs nodig */
     }
 
     .row{
@@ -117,7 +126,6 @@
     }
     .icon{width:24px; height:24px; display:inline-block; color:var(--accent)}
 
-    /* optioneel: logo iets groter op bredere schermen */
     @media (min-width:600px){
       .logo img{max-width:300px}
     }
